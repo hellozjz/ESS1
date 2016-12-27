@@ -1,7 +1,8 @@
 /* ****************************************************************************************************
  * File name: main.c		//	for DC/DC converter: Battery and PV converter
  * Written by: Nguyen Xuan Bac
- * Last updated: Apr 18, 2016														  				  *
+ * Edit by:Zhang Zhe
+ * Last updated: 23 Dec, 2016														  				  *
  *******************************************************************************************************/
 #include "DSP28x_Project.h"
 #include "IQmathlib.h"
@@ -31,6 +32,7 @@ void ADC_Calculation(void);
 void MPPT_PO(void);
 void PI_Controller(void);
 void PWM_Modulation(void);
+void SOC_Calculation(void);
 float LowPassFilter(float32 PreOut, float32 Input, float32 CutFre);
 
 //===========================================================================================================
@@ -116,8 +118,11 @@ float LowPassFilter(float32 PreOut, float32 Input, float32 CutFre);
 #define MAX_DUTY_PV_A				1400
 #define MIN_DUTY_PV_A				500
 
-#define	PROTECT_COUNT		10
-#define	TRIP_COUNT			5
+#define	PROTECT_COUNT				10
+#define	TRIP_COUNT					5
+
+#define SOCmax						100
+#define SOCmin						0
 
 //======================================= Variables ===========================================================================
 
@@ -269,7 +274,8 @@ Uint32 	time2change = 0;
 Uint16	test = 0, test_duty = 0, test1 = 0;
 float32	testing = 0;
 
-
+float SOC;
+float batvol = 0;
 
 extern Uint32 device_id;
 extern int variable_index;
@@ -395,6 +401,7 @@ interrupt void cpu_timer0_isr(void) {
 	    if ((new_mode_A == ISOLATED) || (new_mode_B == ISOLATED) || (new_mode_C == ISOLATED))  Turn_off_Converter();
 	}
 
+	SOC_Calculation();
 	Soft_Transition();
 	if (converter == PV_CONVERTER)	MPPT_PO();
 	PI_Controller();
@@ -2348,6 +2355,22 @@ float LowPassFilter(float32 PreOut, float32 Input, float32 CutFre)
   return OutputFilter;
 }
 
+// For Li-ion battery
 
+void SOC_Calculation () {
+
+	batvol = (viA_ave + viB_ave + viC_ave) * 0.33333; //calculate the battery terminal voltage
+	SOC = 1.3072 * batvol - 329.41;
+
+	if (SOC >= SOCmax)
+	{
+		SOC = SOCmax;
+	}
+	if (SOC <= SOCmin)
+	{
+		SOC = SOCmin;
+	}
+
+}
 
 
