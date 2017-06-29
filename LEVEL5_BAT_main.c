@@ -48,7 +48,7 @@ float LowPassFilter(float32 PreOut, float32 Input, float32 CutFre);
 #define phase_c		1250//250
 //====================== ADC Calibration ==================================================================
 #define offset_a0 	2049//2058		//ADC_A1	ADCINA1		I3, Iw
-#define offset_a1 	2054//2069//2064		//ADC_A2	ADCINA2		V4	vDC
+#define offset_a1 	2065//2054//2069//2064		//ADC_A2	ADCINA2		V4	vDC
 #define offset_a2 	2033//2045		//ADC_A3	ADCINA3		V3	Vw
 #define offset_a3 	2054//2063		//ADC_A4	ADCINA4		I2	Iv
 #define offset_a4 	2047//2056		//ADC_A5	ADCINA5		I1	Iu
@@ -123,6 +123,8 @@ float LowPassFilter(float32 PreOut, float32 Input, float32 CutFre);
 
 #define SOCmax						100
 #define SOCmin						0
+
+#define BATTERY_COUNTER				50000
 
 //======================================= Variables ===========================================================================
 
@@ -274,8 +276,12 @@ Uint32 	time2change = 0;
 Uint16	test = 0, test_duty = 0, test1 = 0;
 float32	testing = 0;
 
-float SOC;
-float batvol = 0;
+float	SOC;
+float	batvol = 0;
+float 	batvol_sum = 0;
+float 	batvol_ave = 0;
+Uint32 	bat_count = 0;
+Uint32	battery_count = 0;
 
 extern Uint32 device_id;
 extern int variable_index;
@@ -377,6 +383,8 @@ for (;;) {
 interrupt void cpu_timer0_isr(void) {
 	time2change++;
 	ecan_count++;								// period to send ecan: 100 x 100us = 10ms
+	battery_count++;
+
 //	if (mode_change == 1)		mode_change_counter++;
 	if (delay_set == 1) delay_counter++;
 	ADC_Calculation();
@@ -642,6 +650,7 @@ void BAT_Send_To_BBB(){
 			dc_bus_vol_int				= (int16) (vo_ave*10);
 			BAT_Send_Data_Canbus(ref_power_confirm_int, bat_vol_int, dc_bus_vol_int, BAT_MESSAGE_4_INDEX);
 			BAT_Send_Data_Canbus(fault_message1, fault_message2, reserve, BAT_MESSAGE_5_INDEX);
+			BAT_Send_Data_Canbus(99, reserve, reserve, BAT_MESSAGE_6_INDEX);
 }
 void PV_Send_To_BBB(){
 			iiA_int		= (int16) (iiA_ave*10);
@@ -1901,7 +1910,7 @@ interrupt void  adc_isr(void)
 	if (converter == BAT_CONVERTER)
 	{
 		iiA = (float) ((adc_a4-offset_a4)*gain_a4);
-		iiB  = (float) ((adc_a3-offset_a3)*gain_a3);
+		iiB = (float) ((adc_a3-offset_a3)*gain_a3);
 		iiC = (float) ((adc_a0-offset_a0)*gain_a0);
 
 		viA = (float) ((adc_a5-offset_a5)*gain_a5);
@@ -1909,7 +1918,7 @@ interrupt void  adc_isr(void)
 		viC = (float) ((adc_a2-offset_a2)*gain_a2);		// ADCresult = 4096*analog/3   3.0/4096.0
 
 		vo = (float) ((adc_a1-offset_a1)*gain_a1);
-		io  = (float) ((adc_b7-offset_b7)*gain_b7);
+		io = (float) ((adc_b7-offset_b7)*gain_b7);
 	}
 	else
 	{
@@ -2359,17 +2368,52 @@ float LowPassFilter(float32 PreOut, float32 Input, float32 CutFre)
 
 void SOC_Calculation () {
 
+	if (INPUT_RELAY_STATUS == 0){
 	batvol = (viA_ave + viB_ave + viC_ave) * 0.33333; //calculate the battery terminal voltage
 	SOC = 1.3072 * batvol - 329.41;
+	}
 
-	if (SOC >= SOCmax)
+	if ((INPUT_RELAY_STATUS == 1) && (battery_count >= BATTERY_COUNTER))
 	{
-		SOC = SOCmax;
+		bat_count ++;
+		batvol = (viA_ave + viB_ave + viC_ave) * 0.33333;
+		batvol_sum = batvol_sum + batvol;
+		batvol_ave = batvol_sum / bat_count;
+		SOC = 1.3072 * batvol_ave - 329.41;
+		battery_count = 0;
 	}
-	if (SOC <= SOCmin)
-	{
-		SOC = SOCmin;
+
+
+
+	if (SOC >= SOCmax)	SOC = SOCmax;
+
+	if (SOC <= SOCmin)	SOC = SOCmin;
+
+
+	/*
+	float pre = 0.0;
+	pre = SOC;
+
+
+	next loop:
+
+	Soc = (SOC + pre)/2;
+
+	if(SOC - pre >=5 ){
+
+	SOC = pre + 5;
+	} else if(SOC - pre <= -5){
+
+		SOC = pre - 5;
+
 	}
+
+	returen SOC; }
+
+
+	*/
+
+
 
 }
 
