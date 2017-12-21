@@ -47,14 +47,14 @@ float LowPassFilter(float32 PreOut, float32 Input, float32 CutFre);
 #define phase_b		1250//250
 #define phase_c		1250//250
 //====================== ADC Calibration ==================================================================
-#define offset_a0 	2049//2058		//ADC_A1	ADCINA1		I3, Iw
-#define offset_a1 	2065//2054//2069//2064		//ADC_A2	ADCINA2		V4	vDC
-#define offset_a2 	2033//2045		//ADC_A3	ADCINA3		V3	Vw
-#define offset_a3 	2054//2063		//ADC_A4	ADCINA4		I2	Iv
-#define offset_a4 	2047//2056		//ADC_A5	ADCINA5		I1	Iu
-#define offset_a5 	2045//2055		//ADC_A7	ADCINA7		V1	Vu
-#define offset_b6 	2049//2058		//ADC_A6	ADCINA6		V2	Vv
-#define offset_b7 	2057//2060		//ADC_B7	ADCINB7		I4	iDC
+#define offset_a0 	2048//2049	//2058		//ADC_A1	ADCINA1		I3, Iw
+#define offset_a1 	2065	//2054		//2064		//ADC_A2	ADCINA2		V4	vDC
+#define offset_a2 	2033	//2045		//ADC_A3	ADCINA3		V3	Vw
+#define offset_a3 	2048//2063		//ADC_A4	ADCINA4		I2	Iv
+#define offset_a4 	2048//2047	//2056		//ADC_A5	ADCINA5		I1	Iu
+#define offset_a5 	2045	//2055		//ADC_A7	ADCINA7		V1	Vu
+#define offset_b6 	2049	//2058		//ADC_A6	ADCINA6		V2	Vv
+#define offset_b7 	2057	//2060		//ADC_B7	ADCINB7		I4	iDC
 
 #define gain_a0		0.0967	//ADC_A1	ADCINA1		I3
 #define gain_a1	    0.3415	//ADC_A2	ADCINA2		V4
@@ -66,32 +66,32 @@ float LowPassFilter(float32 PreOut, float32 Input, float32 CutFre);
 #define gain_b7	    0.0544	//ADC_B7	ADCINB7		I4
 
 // LEVEL5-PV
-#define offset_a0_pv 	2054//2042//2043//	2062		//ADC_A1	ADCINA1		I3, Iw		2043
-#define offset_a1_pv 	2089//2037//2042//	2063		//ADC_A2	ADCINA2		V4	vDC		2072
-#define offset_a2_pv 	2069//2036//2038//	2042		//ADC_A3	ADCINA3		V3	Vw		2037
-#define offset_a3_pv 	2057//2047//2044//	2061		//ADC_A4	ADCINA4		I2	Iv		2044
-#define offset_a4_pv 	2057//2047//2044//	2062		//ADC_A5	ADCINA5		I1	Iu		2044
-#define offset_a5_pv 	2043//2031//2033//	2055		//ADC_A7	ADCINA7		V1	Vu		2058
-#define offset_b6_pv 	2066//2037//2035//	2059		//ADC_A6	ADCINA6		V2	Vv		2035
-#define offset_b7_pv 	2052//2046//2043//	2065		//ADC_B7	ADCINB7		I4	iDC		2043
+#define offset_a0_pv 	2054	//2042//2043//	2062		//ADC_A1	ADCINA1		I3, Iw		2043
+#define offset_a1_pv 	2089	//2037//2042//	2063		//ADC_A2	ADCINA2		V4	vDC		2072
+#define offset_a2_pv 	2069	//2036//2038//	2042		//ADC_A3	ADCINA3		V3	Vw		2037
+#define offset_a3_pv 	2057	//2047//2044//	2061		//ADC_A4	ADCINA4		I2	Iv		2044
+#define offset_a4_pv 	2057	//2047//2044//	2062		//ADC_A5	ADCINA5		I1	Iu		2044
+#define offset_a5_pv 	2043	//2031//2033//	2055		//ADC_A7	ADCINA7		V1	Vu		2058
+#define offset_b6_pv 	2066	//2037//2035//	2059		//ADC_A6	ADCINA6		V2	Vv		2035
+#define offset_b7_pv 	2052	//2046//2043//	2065		//ADC_B7	ADCINB7		I4	iDC		2043
 
-#define gain_a0_pv		0.0961//-0.1896	//ADC_A1	ADCINA1		I3
-#define gain_a1_pv	    0.3438//0.3421	//ADC_A2	ADCINA2		V4
-#define gain_a2_pv	    0.3407//0.3379	//ADC_A3	ADCINA3		V3
-#define gain_a3_pv	    0.0926//-0.0971	//ADC_A4	ADCINA4		I2
-#define gain_a4_pv	    0.0998//0.0938//-0.1859	//ADC_A5	ADCINA5		I1
-#define gain_a5_pv	    0.3432//0.3457	//ADC_A7	ADCINA7		V1
-#define gain_b6_pv	    0.3427//0.3502	//ADC_A6	ADCINA6		V2
-#define gain_b7_pv	    0.0556//0.0523//-0.051	//ADC_B7	ADCINB7		I4
+#define gain_a0_pv		0.0961	//-0.1896	//ADC_A1	ADCINA1		I3
+#define gain_a1_pv	    0.3438	//0.3421	//ADC_A2	ADCINA2		V4
+#define gain_a2_pv	    0.3407	//0.3379	//ADC_A3	ADCINA3		V3
+#define gain_a3_pv	    0.0926	//-0.0971	//ADC_A4	ADCINA4		I2
+#define gain_a4_pv	    0.0998	//0.0938	//-0.1859	ADC_A5	ADCINA5		I1
+#define gain_a5_pv	    0.3432	//0.3457	//ADC_A7	ADCINA7		V1
+#define gain_b6_pv	    0.3427	//0.3502	//ADC_A6	ADCINA6		V2
+#define gain_b7_pv	    0.0556	//0.0523	//-0.051	ADC_B7	ADCINB7		I4
 
 
-#define	epsilon			0.2					//delta_vref
-#define	deltaP			0.2					//threshold of PV power MPPT mode
-#define MPPT_ADC_COUNT	300
+#define	epsilon				0.2		//delta_vref
+#define	deltaP				0.2		//threshold of PV power MPPT mode
+#define MPPT_ADC_COUNT		300
 
-#define vPV_min 		100
-#define vPV_max 		300
-#define PRECHARGING_DELAY  20000
+#define vPV_min 			100
+#define vPV_max 			300
+#define PRECHARGING_DELAY  	20000
 
 
 #define	BAT_CONVERTER 	1
@@ -109,10 +109,10 @@ float LowPassFilter(float32 PreOut, float32 Input, float32 CutFre);
 #define OFF_THRESHOLD_OVER_DC_VOL	420			//BAT shutdown
 #define PV_THRESHOLD_OVER_DC_VOL	400			//PV shutdown
 #define BAT_THRESHOLD_OVER_DC_VOL	395			//BAT auto transition
-#define	BAT_THRESHOLD_LOW_DC_VOL	3//65			//BAT auto transition
-#define	OFF_THRESHOLD_LOW_DC_VOL	3//40			//PV and BAT shutdown
+#define	BAT_THRESHOLD_LOW_DC_VOL	3//65		//BAT auto transition
+#define	OFF_THRESHOLD_LOW_DC_VOL	3//40		//PV and BAT shutdown
 
-#define i_sat 						30				// maximum input current of inner controller
+#define i_sat 						30			// maximum input current of inner controller
 #define MAX_DUTY					1875
 #define MIN_DUTY					0
 #define MAX_DUTY_PV_A				1400
@@ -124,12 +124,9 @@ float LowPassFilter(float32 PreOut, float32 Input, float32 CutFre);
 #define SOCmax						100
 #define SOCmin						0
 
-#define BATTERY_COUNTER				50000
-
 //======================================= Variables ===========================================================================
-
 //Test
-float MIN_INPUT_VOL = 1;//00;	//				150
+float MIN_INPUT_VOL = 1;	//				150
 float MAX_INPUT_VOL = 330;	//				330
 float MAX_INPUT_CUR = 30;	//				12
 float MAX_OUTPUT_CUR = 30;	//				15
@@ -270,18 +267,15 @@ int16	over_cur_B	= 0, over_cur_B_counter = 0;
 int16	over_cur_C	= 0, over_cur_C_counter = 0;
 int16	over_cur_DC = 0, over_cur_DC_counter = 0;
 
-
 // Testing
 Uint32 	time2change = 0;
 Uint16	test = 0, test_duty = 0, test1 = 0;
 float32	testing = 0;
+float32 iref_A_LPF = 0;
 
-float	SOC;
+int		SOC;
+float 	SOC_pre = 0;
 float	batvol = 0;
-float 	batvol_sum = 0;
-float 	batvol_ave = 0;
-Uint32 	bat_count = 0;
-Uint32	battery_count = 0;
 
 extern Uint32 device_id;
 extern int variable_index;
@@ -358,13 +352,9 @@ main() {
 	    ;
 	}
 
-
-
 // forever loop
 for (;;) {
-
 //	Keep sending message to BBB 10ms once
-
 		if (ecan_count >= 10000)
 		{
 			ecan_count 	= 0;
@@ -383,7 +373,6 @@ for (;;) {
 interrupt void cpu_timer0_isr(void) {
 	time2change++;
 	ecan_count++;								// period to send ecan: 100 x 100us = 10ms
-	battery_count++;
 
 //	if (mode_change == 1)		mode_change_counter++;
 	if (delay_set == 1) delay_counter++;
@@ -416,13 +405,13 @@ interrupt void cpu_timer0_isr(void) {
 	PWM_Modulation();
 
 	/* Update duty cycle */
-	 	EPwm1Regs.CMPA.half.CMPA 	= duty_HA; 			// adjust duty for output EPWM1A; // max = 375 <=> pwm = 1 (switch on)
-	 	EPwm1Regs.CMPB 				= duty_LA;			// min = 375 <=> pwm = 0 (switch off)
+	 EPwm1Regs.CMPA.half.CMPA 	= duty_HA; 			// adjust duty for output EPWM1A; // max = 375 <=> pwm = 1 (switch on)
+	 EPwm1Regs.CMPB 				= duty_LA;			// min = 375 <=> pwm = 0 (switch off)
 
-	 	EPwm2Regs.CMPA.half.CMPA 	= duty_HB;
-	 	EPwm2Regs.CMPB 				= duty_LB;
-	 	EPwm3Regs.CMPA.half.CMPA 	= duty_HC;
-	 	EPwm3Regs.CMPB 				= duty_LC;
+	 EPwm2Regs.CMPA.half.CMPA 	= duty_HB;
+	 EPwm2Regs.CMPB 				= duty_LB;
+	 EPwm3Regs.CMPA.half.CMPA 	= duty_HC;
+	 EPwm3Regs.CMPB 				= duty_LC;
 
 	 	PieCtrlRegs.PIEACK.all 		= PIEACK_GROUP1;
 }
@@ -447,39 +436,39 @@ void InitEPwm_Interleaved() {
 	EPwm1Regs.AQCTLB.bit.CBU = AQ_CLEAR;	// set actions for EPWM1B
 	EPwm1Regs.AQCTLB.bit.CBD = AQ_SET;
 		// EPWM Module 2 config
-		EPwm2Regs.TBPRD = period; // Period = 1500 TBCLK counts
-		EPwm2Regs.TBPHS.half.TBPHS = phase_b; // Phase = 500/1500 * 360 = 120 deg
-		EPwm2Regs.TBCTL.bit.CTRMODE = TB_COUNT_UPDOWN; // Symmetrical mode
-		EPwm2Regs.TBCTL.bit.PHSEN = TB_ENABLE; // Slave module
-		EPwm2Regs.TBCTL.bit.PHSDIR = TB_DOWN; // Count DOWN on sync (=120 deg)
-		EPwm2Regs.TBCTL.bit.PRDLD = TB_SHADOW;
-		EPwm2Regs.TBCTL.bit.SYNCOSEL = TB_SYNC_IN; // sync flow-through
-		EPwm2Regs.CMPCTL.bit.SHDWAMODE = CC_SHADOW;
-		EPwm2Regs.CMPCTL.bit.SHDWBMODE = CC_SHADOW;
-		EPwm2Regs.CMPCTL.bit.LOADAMODE = CC_CTR_ZERO; // load on CTR=Zero
-		EPwm2Regs.CMPCTL.bit.LOADBMODE = CC_CTR_ZERO; // load on CTR=Zero
-		EPwm2Regs.AQCTLA.bit.CAU = AQ_SET; // set actions for EPWM2A
-		EPwm2Regs.AQCTLA.bit.CAD = AQ_CLEAR;
+	EPwm2Regs.TBPRD = period; // Period = 1500 TBCLK counts
+	EPwm2Regs.TBPHS.half.TBPHS = phase_b; // Phase = 500/1500 * 360 = 120 deg
+	EPwm2Regs.TBCTL.bit.CTRMODE = TB_COUNT_UPDOWN; // Symmetrical mode
+	EPwm2Regs.TBCTL.bit.PHSEN = TB_ENABLE; // Slave module
+	EPwm2Regs.TBCTL.bit.PHSDIR = TB_DOWN; // Count DOWN on sync (=120 deg)
+	EPwm2Regs.TBCTL.bit.PRDLD = TB_SHADOW;
+	EPwm2Regs.TBCTL.bit.SYNCOSEL = TB_SYNC_IN; // sync flow-through
+	EPwm2Regs.CMPCTL.bit.SHDWAMODE = CC_SHADOW;
+	EPwm2Regs.CMPCTL.bit.SHDWBMODE = CC_SHADOW;
+	EPwm2Regs.CMPCTL.bit.LOADAMODE = CC_CTR_ZERO; // load on CTR=Zero
+	EPwm2Regs.CMPCTL.bit.LOADBMODE = CC_CTR_ZERO; // load on CTR=Zero
+	EPwm2Regs.AQCTLA.bit.CAU = AQ_SET; // set actions for EPWM2A
+	EPwm2Regs.AQCTLA.bit.CAD = AQ_CLEAR;
 
-		EPwm2Regs.AQCTLB.bit.CBU = AQ_CLEAR;	// set actions for EPWM1B
-		EPwm2Regs.AQCTLB.bit.CBD = AQ_SET;
+	EPwm2Regs.AQCTLB.bit.CBU = AQ_CLEAR;	// set actions for EPWM1B
+	EPwm2Regs.AQCTLB.bit.CBD = AQ_SET;
 		// EPWM Module 3 config
-		EPwm3Regs.TBPRD = period; // Period = 900 TBCLK counts
-		EPwm3Regs.TBPHS.half.TBPHS = phase_c; // Phase = 500/1500 * 360 = 120 deg
-		EPwm3Regs.TBCTL.bit.CTRMODE = TB_COUNT_UPDOWN; // Symmetrical mode
-		EPwm3Regs.TBCTL.bit.PHSEN = TB_ENABLE; // Slave module
-		EPwm3Regs.TBCTL.bit.PHSDIR = TB_UP; // Count UP on sync (=240 deg)
-		EPwm3Regs.TBCTL.bit.PRDLD = TB_SHADOW;
-		EPwm3Regs.TBCTL.bit.SYNCOSEL = TB_SYNC_IN; // sync flow-through
-		EPwm3Regs.CMPCTL.bit.SHDWAMODE = CC_SHADOW;
-		EPwm3Regs.CMPCTL.bit.SHDWBMODE = CC_SHADOW;
-		EPwm3Regs.CMPCTL.bit.LOADAMODE = CC_CTR_ZERO; // load on CTR=Zero
-		EPwm3Regs.CMPCTL.bit.LOADBMODE = CC_CTR_ZERO; // load on CTR=Zero
-		EPwm3Regs.AQCTLA.bit.CAU = AQ_SET; // set actions for EPWM3Ai
-		EPwm3Regs.AQCTLA.bit.CAD = AQ_CLEAR;
+	EPwm3Regs.TBPRD = period; // Period = 900 TBCLK counts
+	EPwm3Regs.TBPHS.half.TBPHS = phase_c; // Phase = 500/1500 * 360 = 120 deg
+	EPwm3Regs.TBCTL.bit.CTRMODE = TB_COUNT_UPDOWN; // Symmetrical mode
+	EPwm3Regs.TBCTL.bit.PHSEN = TB_ENABLE; // Slave module
+	EPwm3Regs.TBCTL.bit.PHSDIR = TB_UP; // Count UP on sync (=240 deg)
+	EPwm3Regs.TBCTL.bit.PRDLD = TB_SHADOW;
+	EPwm3Regs.TBCTL.bit.SYNCOSEL = TB_SYNC_IN; // sync flow-through
+	EPwm3Regs.CMPCTL.bit.SHDWAMODE = CC_SHADOW;
+	EPwm3Regs.CMPCTL.bit.SHDWBMODE = CC_SHADOW;
+	EPwm3Regs.CMPCTL.bit.LOADAMODE = CC_CTR_ZERO; // load on CTR=Zero
+	EPwm3Regs.CMPCTL.bit.LOADBMODE = CC_CTR_ZERO; // load on CTR=Zero
+	EPwm3Regs.AQCTLA.bit.CAU = AQ_SET; // set actions for EPWM3Ai
+	EPwm3Regs.AQCTLA.bit.CAD = AQ_CLEAR;
 
-		EPwm3Regs.AQCTLB.bit.CBU = AQ_CLEAR;	// set actions for EPWM1B
-		EPwm3Regs.AQCTLB.bit.CBD = AQ_SET;
+	EPwm3Regs.AQCTLB.bit.CBU = AQ_CLEAR;	// set actions for EPWM1B
+	EPwm3Regs.AQCTLB.bit.CBD = AQ_SET;
 }
 void Scan_button() {
 	START_BUTTON = GpioDataRegs.GPBDAT.bit.GPIO61;// Scan Start button, press => START_BUTTON = 0 (nhan start) => Precharge
@@ -650,7 +639,7 @@ void BAT_Send_To_BBB(){
 			dc_bus_vol_int				= (int16) (vo_ave*10);
 			BAT_Send_Data_Canbus(ref_power_confirm_int, bat_vol_int, dc_bus_vol_int, BAT_MESSAGE_4_INDEX);
 			BAT_Send_Data_Canbus(fault_message1, fault_message2, reserve, BAT_MESSAGE_5_INDEX);
-			BAT_Send_Data_Canbus(99, reserve, reserve, BAT_MESSAGE_6_INDEX);
+			BAT_Send_Data_Canbus(SOC, reserve, reserve, BAT_MESSAGE_6_INDEX);
 }
 void PV_Send_To_BBB(){
 			iiA_int		= (int16) (iiA_ave*10);
@@ -1961,6 +1950,7 @@ void ADC_Calculation(){
 	iiC_ave = iiC_sum*ConversionCount1;
 	io_ave  = io_sum*ConversionCount1;
 
+
 	i_in_ave = (iiA_ave + iiB_ave + iiC_ave)*0.333;
 
 	viA_sum = 0;
@@ -1991,8 +1981,11 @@ if (converter == BAT_CONVERTER)
 		}
 
 		iref_A = iref_A_pre + (kpv_A + kiv_A * Ts / 2) * ev_A + (-kpv_A + kiv_A * Ts / 2) * ev_A_pre;
-		iref_B = iref_B_pre + (kpv_B + kiv_B * Ts / 2) * ev_B + (-kpv_B + kiv_B * Ts / 2) * ev_B_pre;
-		iref_C = iref_C_pre + (kpv_C + kiv_C * Ts / 2) * ev_C + (-kpv_C + kiv_C * Ts / 2) * ev_C_pre;
+		iref_A_LPF = LowPassFilter(iref_A_LPF, iref_A, 1000);
+		iref_B = iref_A;
+		iref_C = iref_A;
+		//iref_B = iref_B_pre + (kpv_B + kiv_B * Ts / 2) * ev_B + (-kpv_B + kiv_B * Ts / 2) * ev_B_pre;
+		//iref_C = iref_C_pre + (kpv_C + kiv_C * Ts / 2) * ev_C + (-kpv_C + kiv_C * Ts / 2) * ev_C_pre;
 		if (iref_A < -i_sat)	iref_A = -i_sat;
 		if (iref_B < -i_sat)	iref_B = -i_sat;
 		if (iref_C < -i_sat)	iref_C = -i_sat;
@@ -2253,18 +2246,16 @@ break;
 }
 }
 
-
 //test
 //
 //	 duty_HA = 0;
 //	 duty_LA = 1875;
-////////
+//
 //	 duty_HB = 0;
 //	 duty_LB = 1875;
 //
 //	 duty_HC = 0;
 //	 duty_LC = 1875;
- //
 
 }
 void MPPT_PO(){
@@ -2366,55 +2357,26 @@ float LowPassFilter(float32 PreOut, float32 Input, float32 CutFre)
 
 // For Li-ion battery
 
-void SOC_Calculation () {
-
-	if (INPUT_RELAY_STATUS == 0){
-	batvol = (viA_ave + viB_ave + viC_ave) * 0.33333; //calculate the battery terminal voltage
-	SOC = 1.3072 * batvol - 329.41;
-	}
-
-	if ((INPUT_RELAY_STATUS == 1) && (battery_count >= BATTERY_COUNTER))
-	{
-		bat_count ++;
-		batvol = (viA_ave + viB_ave + viC_ave) * 0.33333;
-		batvol_sum = batvol_sum + batvol;
-		batvol_ave = batvol_sum / bat_count;
-		SOC = 1.3072 * batvol_ave - 329.41;
-		battery_count = 0;
-	}
+		void SOC_Calculation () {
 
 
+			if (INPUT_RELAY_STATUS == 0)
+			{
+				SOC = 0;
+			}
 
-	if (SOC >= SOCmax)	SOC = SOCmax;
+			if (INPUT_RELAY_STATUS == 1)
+			{
+			batvol = (viA_ave + viB_ave + viC_ave) * 0.33333;
+			SOC = 1.3072 * batvol - 329.41;
+			SOC_pre = SOC;
 
-	if (SOC <= SOCmin)	SOC = SOCmin;
+			SOC = (SOC + SOC_pre) / 2.0;
 
+				if (SOC >= SOCmax)	SOC = SOCmax;
 
-	/*
-	float pre = 0.0;
-	pre = SOC;
-
-
-	next loop:
-
-	Soc = (SOC + pre)/2;
-
-	if(SOC - pre >=5 ){
-
-	SOC = pre + 5;
-	} else if(SOC - pre <= -5){
-
-		SOC = pre - 5;
-
-	}
-
-	returen SOC; }
-
-
-	*/
-
-
-
+				if (SOC <= SOCmin)	SOC = SOCmin;
+			}
 }
 
 
